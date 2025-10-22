@@ -9,11 +9,18 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // ✅ Fixes CORS
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data)
     };
   } catch (error) {
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
       body: JSON.stringify({ error: "Something went wrong." })
     };
   }
